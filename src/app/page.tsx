@@ -46,7 +46,13 @@ const HeroAnimation = () => {
 }
 
 export default function LandingPage() {
-  const isMobile = useMediaQuery({ maxWidth: 767 })
+  const [isMounted, setIsMounted] = useState(false);
+  const isMediaQuery = useMediaQuery({ maxWidth: 767 });
+  const isMobile = isMounted ? isMediaQuery : false;
+
+  useEffect(() => {
+    setIsMounted(true);
+  }, []);
 
   const fadeInUp = {
     initial: { opacity: 0, y: 20 },
@@ -119,6 +125,14 @@ export default function LandingPage() {
     emailFormRef.current?.scrollIntoView({ behavior: 'smooth' })
   }
 
+  if (!isMounted) {
+    return (
+      <div className="min-h-screen bg-[#F5F5F5] flex items-center justify-center">
+        <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-[#EE434A]"></div>
+      </div>
+    );
+  }
+
   return (
     <div className={`min-h-screen bg-[#F5F5F5] text-[#1E3443] pb-16 md:pb-0 ${poppins.variable} font-sans relative`}>
       <Particles
@@ -140,7 +154,49 @@ export default function LandingPage() {
               />
               {/* <span className="text-xl font-bold text-[#2A4D61]">YouVersity</span> */}
             </motion.div>
-            {!isMobile && (
+            {!isMounted && isMobile && (
+              <motion.nav
+                className="fixed bottom-0 left-0 right-0 bg-white/80 backdrop-blur-sm shadow-lg z-50"
+                initial={{ y: 100 }}
+                animate={{ y: 0 }}
+                transition={{ duration: 0.3 }}
+              >
+                <div className="flex justify-around items-center py-2">
+                  {menuItems.map((item, index) => (
+                    <motion.div
+                      key={item.name}
+                      className="relative group"
+                      whileHover={{ scale: 1.1 }}
+                      whileTap={{ scale: 0.95 }}
+                    >
+                      <a
+                        href="#"
+                        className={`flex flex-col items-center text-[#2A4D61] hover:text-[#EE434A] transition-colors ${
+                          item.comingSoon ? 'pointer-events-none' : ''
+                        }`}
+                      >
+                        <item.icon className="w-6 h-6 mb-1" />
+                        <span className="text-xs">{item.name}</span>
+                      </a>
+                      {item.comingSoon && (
+                        <span className="absolute top-full left-1/2 transform -translate-x-1/2 bg-[#EE434A] text-white text-xs py-1 px-2 rounded opacity-0 group-hover:opacity-100 transition-opacity duration-200 whitespace-nowrap">
+                          Coming Soon
+                        </span>
+                      )}
+                    </motion.div>
+                  ))}
+                  <motion.div
+                    whileHover={{ scale: 1.1 }}
+                    whileTap={{ scale: 0.95 }}
+                  >
+                    <Button className="bg-[#EE434A] hover:bg-[#D93D44] text-white rounded-full p-2">
+                      <User className="w-5 h-5" />
+                    </Button>
+                  </motion.div>
+                </div>
+              </motion.nav>
+            )}
+            {isMounted && !isMobile && (
               <div className="hidden md:flex space-x-6">
                 {menuItems.map((item, index) => (
                   <motion.div
@@ -185,6 +241,7 @@ export default function LandingPage() {
                 alt="YouVersity Logo"
                 width={400}
                 height={107}
+                priority
                 className="w-[400px] mb-6"
               />
               <motion.h1
@@ -456,7 +513,7 @@ export default function LandingPage() {
           </div>
         </footer>
 
-        {isMobile && (
+        {isMounted && isMobile && (
           <motion.nav
             className="fixed bottom-0 left-0 right-0 bg-white/80 backdrop-blur-sm shadow-lg z-50"
             initial={{ y: 100 }}
