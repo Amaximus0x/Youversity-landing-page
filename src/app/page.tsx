@@ -36,7 +36,7 @@ const HeroAnimation = () => {
   }
 
   return (
-    <div className="bg-[#F5F5F5]">
+    <div className="relative z-[10]">
       <Lottie
         animationData={animationData}
         className="w-full h-full"
@@ -284,7 +284,7 @@ export default function LandingPage() {
                 </Button>
               </motion.div>
             </div>
-            <div className="md:w-1/2 bg-[#F5F5F5]">
+            <div className="md:w-1/2 relative z-[10]">
               <HeroAnimation />
             </div>
           </motion.section>
