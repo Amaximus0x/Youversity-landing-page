@@ -36,12 +36,14 @@ const HeroAnimation = () => {
   }
 
   return (
-    <Lottie
-      animationData={animationData}
-      className="w-full h-full"
-      loop={true}
-      autoplay={true}
-    />
+    <div className="bg-[#F5F5F5]">
+      <Lottie
+        animationData={animationData}
+        className="w-full h-full"
+        loop={true}
+        autoplay={true}
+      />
+    </div>
   )
 }
 
@@ -71,11 +73,6 @@ export default function LandingPage() {
   }, [])
 
   const particlesOptions = {
-    background: {
-      color: {
-        value: "#F5F5F5",
-      },
-    },
     fpsLimit: 120,
     particles: {
       color: {
@@ -112,7 +109,17 @@ export default function LandingPage() {
         type: "circle",
       },
       size: {
-        value: { min: 1, max: 3 },
+        value: { min: 0.5, max: 1 },
+      },
+    },
+    interactivity: {
+      events: {
+        onClick: {
+          enable: false,
+        },
+        onHover: {
+          enable: false,
+        },
       },
     },
     detectRetina: true,
@@ -134,17 +141,19 @@ export default function LandingPage() {
   }
 
   return (
-    <div className={`min-h-screen bg-[#F5F5F5] text-[#1E3443] pb-16 md:pb-0 ${poppins.variable} font-sans relative`}>
-      <Particles
-        className="absolute inset-0 z-0"
-        id="tsparticles"
-        init={particlesInit}
-        options={particlesOptions}
-      />
-      <div className="relative z-10">
-        <header className="bg-white/80 backdrop-blur-sm shadow-sm sticky top-0 z-20">
+    <div className={`min-h-screen bg-[#F5F5F5] text-[#1E3443] pb-16 md:pb-0 ${poppins.variable} font-sans relative overflow-hidden`}>
+      <div className="absolute inset-0 z-[1] pointer-events-none">
+        <Particles
+          className="absolute inset-0"
+          id="background-particles"
+          init={particlesInit}
+          options={particlesOptions}
+        />
+      </div>
+      <div className="relative z-[2]">
+        <header className="bg-white/80 backdrop-blur-sm shadow-sm sticky top-0 z-30">
           <nav className="container mx-auto px-6 py-4 flex items-center justify-between">
-            <motion.div className="flex items-center space-x-2" initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.5 }}>
+            <motion.div className="flex items-center space-x-2 bg-white/80" initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.5 }}>
               <Image
                 src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/YouVersity-OaDJMiQwgpRDm2eaJ4e7fXRjimyir2.png"
                 alt="YouVersity Logo"
@@ -234,7 +243,10 @@ export default function LandingPage() {
         </header>
 
         <main className="container mx-auto px-4 py-8 space-y-16">
-          <motion.section className="flex flex-col md:flex-row items-center justify-between space-y-8 md:space-y-0 py-12" {...fadeInUp}>
+          <motion.section 
+            className="flex flex-col md:flex-row items-center justify-between space-y-8 md:space-y-0 py-12 relative z-[10]" 
+            {...fadeInUp}
+          >
             <div className="md:w-1/2 space-y-6">
               <Image
                 src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/YouVersity2-42P77EuIMRuHQm4d9vtrw0tOCKefMJ.png"
@@ -272,7 +284,7 @@ export default function LandingPage() {
                 </Button>
               </motion.div>
             </div>
-            <div className="md:w-1/2">
+            <div className="md:w-1/2 bg-[#F5F5F5]">
               <HeroAnimation />
             </div>
           </motion.section>
@@ -281,7 +293,7 @@ export default function LandingPage() {
             <motion.div whileHover={{ scale: 1.03, boxShadow: "0 4px 20px rgba(0,0,0,0.1)" }} transition={{ duration: 0.3 }}>
               <Card className="bg-white/80 backdrop-blur-sm shadow-md rounded-2xl overflow-hidden h-full">
                 <CardContent className="p-6">
-                  <h2 className="text-xl font-bold mb-4 text-[#2A4D61] flex items-center">
+                  <h2 className="text-xl font-bold mb-4 text-[#2A4D61] flex items-center bg-white/80">
                     <Sparkles className="w-6 h-6 mr-2 text-[#EE434A]" />
                     For HR and L&D Professionals
                   </h2>
@@ -350,7 +362,9 @@ export default function LandingPage() {
                   >
                     {item.step}
                   </motion.div>
-                  <item.icon className="w-6 h-6 md:w-8 md:h-8 mb-2 md:mb-3 text-[#2A4D61]" />
+                  <div className="bg-white/80">
+                    <item.icon className="w-6 h-6 md:w-8 md:h-8 mb-2 md:mb-3 text-[#2A4D61]" />
+                  </div>
                   <p className="text-xs md:text-sm font-medium">{item.description}</p>
                 </motion.div>
               ))}
@@ -389,30 +403,32 @@ export default function LandingPage() {
             transition={{ duration: 0.5 }}
             whileHover={{ boxShadow: "0 4px 20px rgba(0,0,0,0.2)" }}
           >
-            <Particles
-              className="absolute inset-0"
-              id="cta-particles"
-              init={particlesInit}
-              options={{
-                ...particlesOptions,
-                background: {
-                  color: {
-                    value: "#2A4D61",
+            <div className="absolute inset-0 z-[1] pointer-events-none">
+              <Particles
+                className="absolute inset-0"
+                id="cta-particles"
+                init={particlesInit}
+                options={{
+                  ...particlesOptions,
+                  particles: {
+                    ...particlesOptions.particles,
+                    color: {
+                      value: "#ffffff",
+                    },
+                    opacity: {
+                      value: 0.3,
+                    },
+                    links: {
+                      ...particlesOptions.particles.links,
+                      color: "#ffffff",
+                      opacity: 0.3,
+                      width: 1,
+                    },
                   },
-                },
-                particles: {
-                  ...particlesOptions.particles,
-                  opacity: {
-                    value: 0.1,
-                  },
-                  links: {
-                    ...particlesOptions.particles.links,
-                    color: "#ffffff",
-                  },
-                },
-              }}
-            />
-            <div className="relative z-10">
+                }}
+              />
+            </div>
+            <div className="relative z-[2]">
               <motion.h2
                 className="text-xl md:text-2xl font-bold mb-4"
                 initial={{ opacity: 0, y: 20 }}
@@ -469,7 +485,7 @@ export default function LandingPage() {
           </motion.section>
         </main>
 
-        <footer className="bg-[#2A4D61] text-white py-8 md:py-12 mt-16 rounded-t-3xl relative z-10">
+        <footer className="bg-[#2A4D61] text-white py-8 md:py-12 mt-16 rounded-t-3xl relative z-20">
           <div className="container mx-auto px-4">
             <div className="flex flex-col md:flex-row justify-between items-center mb-8">
               <motion.div
@@ -508,7 +524,7 @@ export default function LandingPage() {
               animate={{ opacity: 1 }}
               transition={{ duration: 0.5, delay: 0.5 }}
             >
-              © 2024 YouVersity. All rights reserved.
+              2024 YouVersity. All rights reserved.
             </motion.div>
           </div>
         </footer>
