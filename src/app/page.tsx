@@ -3,7 +3,7 @@
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
 import { CheckCircle, Play, ArrowRight, Sparkles, Book, Trophy, Home, PlusCircle, User } from "lucide-react"
-import { motion, AnimatePresence } from "framer-motion"
+import { motion } from "framer-motion"
 import { useMediaQuery } from "react-responsive"
 import { Poppins } from 'next/font/google'
 import Lottie from "lottie-react"
@@ -36,7 +36,7 @@ const HeroAnimation = () => {
   }
 
   return (
-    <div className="relative z-[10]">
+    <div className="bg-[#F5F5F5]">
       <Lottie
         animationData={animationData}
         className="w-full h-full"
@@ -86,10 +86,10 @@ export default function LandingPage() {
         width: 1,
       },
       move: {
-        direction: "none",
+        direction: "none" as const,
         enable: true,
         outModes: {
-          default: "bounce",
+          default: "bounce" as const,
         },
         random: false,
         speed: 0.5,
@@ -106,7 +106,7 @@ export default function LandingPage() {
         value: 0.1,
       },
       shape: {
-        type: "circle",
+        type: "circle" as const,
       },
       size: {
         value: { min: 0.5, max: 1 },
@@ -123,7 +123,7 @@ export default function LandingPage() {
       },
     },
     detectRetina: true,
-  }
+  } as const;
 
   const [emailSubmitted, setEmailSubmitted] = useState(false)
   const emailFormRef = useRef<HTMLFormElement>(null)
@@ -171,7 +171,7 @@ export default function LandingPage() {
                 transition={{ duration: 0.3 }}
               >
                 <div className="flex justify-around items-center py-2">
-                  {menuItems.map((item, index) => (
+                  {menuItems.map((item) => (
                     <motion.div
                       key={item.name}
                       className="relative group"
@@ -284,7 +284,7 @@ export default function LandingPage() {
                 </Button>
               </motion.div>
             </div>
-            <div className="md:w-1/2 relative z-[10]">
+            <div className="md:w-1/2 bg-[#F5F5F5]">
               <HeroAnimation />
             </div>
           </motion.section>
@@ -537,7 +537,7 @@ export default function LandingPage() {
             transition={{ duration: 0.3 }}
           >
             <div className="flex justify-around items-center py-2">
-              {menuItems.map((item, index) => (
+              {menuItems.map((item) => (
                 <motion.div
                   key={item.name}
                   className="relative group"
