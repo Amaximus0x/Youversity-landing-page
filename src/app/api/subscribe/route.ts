@@ -18,8 +18,9 @@ export async function POST(request: Request) {
 
     return NextResponse.json({ status: 'success' })
   } catch (error) {
+    console.error('Subscription error:', error)
     return NextResponse.json(
-      { error: 'Failed to submit email' },
+      { error: error instanceof Error ? error.message : 'Failed to submit email' },
       { status: 500 }
     )
   }
