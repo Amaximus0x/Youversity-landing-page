@@ -86,10 +86,10 @@ export default function LandingPage() {
         width: 1,
       },
       move: {
-        direction: "none",
+        direction: "none" as const,
         enable: true,
         outModes: {
-          default: "bounce",
+          default: "bounce" as const,
         },
         random: false,
         speed: 0.5,
@@ -106,7 +106,7 @@ export default function LandingPage() {
         value: 0.1,
       },
       shape: {
-        type: "circle",
+        type: "circle" as const,
       },
       size: {
         value: { min: 0.5, max: 1 },
@@ -123,7 +123,7 @@ export default function LandingPage() {
       },
     },
     detectRetina: true,
-  }
+  } as const;
 
   const [emailSubmitted, setEmailSubmitted] = useState(false)
   const emailFormRef = useRef<HTMLFormElement>(null)
