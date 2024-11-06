@@ -125,12 +125,54 @@ export default function LandingPage() {
     detectRetina: true,
   } as const;
 
-  const [emailSubmitted, setEmailSubmitted] = useState(false)
+  const [emailSubmitted, setEmailSubmitted] = useState(false);
+  const [submitError, setSubmitError] = useState<string | null>(null);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+
   const emailFormRef = useRef<HTMLFormElement>(null)
 
   const scrollToEmailForm = () => {
     emailFormRef.current?.scrollIntoView({ behavior: 'smooth' })
   }
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+    setSubmitError(null);
+    setEmailSubmitted(false);
+    
+    const form = e.currentTarget;
+    const email = form.email.value;
+
+    try {
+      const response = await fetch('/api/subscribe', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ email }),
+      });
+
+      if (!response.ok) {
+        throw new Error('Failed to submit email');
+      }
+
+      const data = await response.json();
+      
+      if (data.error) {
+        throw new Error(data.error);
+      }
+
+      setEmailSubmitted(true);
+      form.reset();
+      setTimeout(() => setEmailSubmitted(false), 5000);
+    } catch (error) {
+      setSubmitError(error instanceof Error ? error.message : 'Failed to submit email. Please try again.');
+      console.error('Error submitting email:', error);
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
 
   if (!isMounted) {
     return (
@@ -451,13 +493,7 @@ export default function LandingPage() {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: 0.6 }}
-                onSubmit={(e) => {
-                  e.preventDefault();
-                  // Handle form submission here
-                  console.log("Email submitted:", e.currentTarget.email.value);
-                  setEmailSubmitted(true);
-                  setTimeout(() => setEmailSubmitted(false), 5000); // Hide success message after 5 seconds
-                }}
+                onSubmit={handleSubmit}
               >
                 <input
                   type="email"
@@ -465,10 +501,24 @@ export default function LandingPage() {
                   placeholder="Enter your email"
                   aria-label="Email address"
                   required
-                  className="w-full sm:w-64 px-4 py-2 rounded-full bg-white text-[#2A4D61] placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-[#EE434A]"
+                  disabled={isSubmitting}
+                  className="w-full sm:w-64 px-4 py-2 rounded-full bg-white text-[#2A4D61] placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-[#EE434A] disabled:opacity-50"
                 />
-                <Button type="submit" className="w-full sm:w-auto bg-[#EE434A] hover:bg-[#D93D44] text-white rounded-full">
-                  Join the Waitlist <ArrowRight className="ml-2 h-4 w-4" />
+                <Button 
+                  type="submit" 
+                  className="w-full sm:w-auto bg-[#EE434A] hover:bg-[#D93D44] text-white rounded-full"
+                  disabled={isSubmitting}
+                >
+                  {isSubmitting ? (
+                    <div className="flex items-center">
+                      <div className="animate-spin rounded-full h-4 w-4 border-b-2 border-white mr-2"></div>
+                      Submitting...
+                    </div>
+                  ) : (
+                    <>
+                      Join the Waitlist <ArrowRight className="ml-2 h-4 w-4" />
+                    </>
+                  )}
                 </Button>
               </motion.form>
               {emailSubmitted && (
@@ -476,9 +526,19 @@ export default function LandingPage() {
                   initial={{ opacity: 0, y: -10 }}
                   animate={{ opacity: 1, y: 0 }}
                   exit={{ opacity: 0, y: -10 }}
-                  className="mt-4 text-green-400 font-semibold"
+                  className="mt-4 text-green-400 font-semibold text-center"
                 >
-                  Thank you for joining our waitlist!
+                  Thank you for joining! We'll be in touch soon.
+                </motion.div>
+              )}
+              {submitError && (
+                <motion.div
+                  initial={{ opacity: 0, y: -10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -10 }}
+                  className="mt-4 text-red-400 font-semibold text-center"
+                >
+                  {submitError}
                 </motion.div>
               )}
             </div>
