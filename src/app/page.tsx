@@ -418,7 +418,7 @@ export default function LandingPage() {
             <div className="grid md:grid-cols-2 gap-6">
               {[
                 { quote: "YouVersity has revolutionized our corporate training. It's efficient, cost-effective, and our employees love it!", author: "Jane Doe, HR Manager at TechCorp" },
-                { quote: "I've learned more in the past month with YouVersity than I did in a year of casual YouTube watching. The structure makes all the difference.", author: "John Smith, Freelance Developer" }
+                { quote: "I&apos;ve learned more in the past month with YouVersity than I did in a year of casual YouTube watching. The structure makes all the difference.", author: "John Smith, Freelance Developer" }
               ].map((testimonial, index) => (
                 <motion.div
                   key={index}
