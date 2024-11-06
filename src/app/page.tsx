@@ -3,7 +3,7 @@
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
 import { CheckCircle, Play, ArrowRight, Sparkles, Book, Trophy, Home, PlusCircle, User } from "lucide-react"
-import { motion, AnimatePresence } from "framer-motion"
+import { motion } from "framer-motion"
 import { useMediaQuery } from "react-responsive"
 import { Poppins } from 'next/font/google'
 import Lottie from "lottie-react"
@@ -171,7 +171,7 @@ export default function LandingPage() {
                 transition={{ duration: 0.3 }}
               >
                 <div className="flex justify-around items-center py-2">
-                  {menuItems.map((item, index) => (
+                  {menuItems.map((item) => (
                     <motion.div
                       key={item.name}
                       className="relative group"
@@ -537,7 +537,7 @@ export default function LandingPage() {
             transition={{ duration: 0.3 }}
           >
             <div className="flex justify-around items-center py-2">
-              {menuItems.map((item, index) => (
+              {menuItems.map((item) => (
                 <motion.div
                   key={item.name}
                   className="relative group"
