@@ -304,7 +304,7 @@ export default function LandingPage() {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5 }}
               >
-                Turn YouTube into Your University
+                Transform Your YouTube Time into Real Learning
               </motion.h1>
               <motion.p
                 className="text-base md:text-lg text-[#1E3443] max-w-lg"
@@ -312,7 +312,7 @@ export default function LandingPage() {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: 0.2 }}
               >
-                Unlock the power of AI-driven learning and transform your educational journey with personalized content from YouTube.
+                Stop Scrolling. Start Growing. Turn those "just 5 more minutes" of YouTube into actual knowledge that matters.
               </motion.p>
               <motion.div
                 whileHover={{ scale: 1.05 }}
@@ -337,14 +337,14 @@ export default function LandingPage() {
                 <CardContent className="p-6">
                   <h2 className="text-xl font-bold mb-4 text-[#2A4D61] flex items-center bg-white/80">
                     <Sparkles className="w-6 h-6 mr-2 text-[#EE434A]" />
-                    For HR and L&D Professionals
+                    Learning at the Speed of YouTube
                   </h2>
                   <ul className="space-y-2">
                     {[
-                      "Cost-effective training solutions",
-                      "Custom courses at your fingertips",
-                      "Up-to-date content leveraging the latest YouTube videos",
-                      "Flexibility to create company-specific training programs"
+                      "Build custom courses with a click of a button",
+                      "Master new technologies before traditional courses",
+                      "Share courses with your friends, students, coworkers and community",
+                      "Learn from your favorite educators"
                     ].map((item, index) => (
                       <motion.li key={index} className="flex items-start" initial={{ opacity: 0, x: -20 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.3, delay: index * 0.1 }}>
                         <CheckCircle className="w-5 h-5 text-[#42C1C8] mr-2 flex-shrink-0" />
@@ -360,14 +360,14 @@ export default function LandingPage() {
                 <CardContent className="p-6">
                   <h2 className="text-xl font-bold mb-4 text-[#2A4D61] flex items-center">
                     <Book className="w-6 h-6 mr-2 text-[#42C1C8]" />
-                    For Individual Learners
+                    Procrastination-Proof Learning
                   </h2>
                   <ul className="space-y-2">
                     {[
-                      "Personalized learning paths",
-                      "Learn at your own pace",
-                      "Access to a vast library of educational content",
-                      "AI-powered course recommendations"
+                      "Transform mindless scrolling into meaningful learning",
+                      "Go deeper with structured lessons",
+                      "Turn watching into active learning",
+                      "Track your progress with auto-generated quizzes"
                     ].map((item, index) => (
                       <motion.li key={index} className="flex items-start" initial={{ opacity: 0, x: -20 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.3, delay: index * 0.1 }}>
                         <CheckCircle className="w-5 h-5 text-[#EE434A] mr-2 flex-shrink-0" />
@@ -381,44 +381,11 @@ export default function LandingPage() {
           </motion.section>
 
           <motion.section {...fadeInUp}>
-            <h2 className="text-2xl font-bold mb-6 text-center text-[#2A4D61]">How YouVersity Works</h2>
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
-              {[
-                { step: 1, description: "Select your learning goals", icon: Sparkles },
-                { step: 2, description: "AI curates relevant content", icon: Play },
-                { step: 3, description: "Engage with interactive quizzes", icon: Book },
-                { step: 4, description: "Track progress and earn certificates", icon: Trophy }
-              ].map((item, index) => (
-                <motion.div
-                  key={item.step}
-                  className="text-center bg-white/80 backdrop-blur-sm p-4 md:p-6 shadow-md rounded-2xl flex flex-col items-center"
-                  whileHover={{ scale: 1.05, boxShadow: "0 4px 20px rgba(0,0,0,0.1)" }}
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.3, delay: index * 0.1 }}
-                >
-                  <motion.div
-                    className="w-12 h-12 md:w-16 md:h-16 rounded-full bg-[#EE434A] text-white text-xl md:text-2xl font-bold flex items-center justify-center mb-3 md:mb-4"
-                    whileHover={{ rotate: 360 }}
-                    transition={{ duration: 0.5 }}
-                  >
-                    {item.step}
-                  </motion.div>
-                  <div className="bg-white/80">
-                    <item.icon className="w-6 h-6 md:w-8 md:h-8 mb-2 md:mb-3 text-[#2A4D61]" />
-                  </div>
-                  <p className="text-xs md:text-sm font-medium">{item.description}</p>
-                </motion.div>
-              ))}
-            </div>
-          </motion.section>
-
-          <motion.section {...fadeInUp}>
-            <h2 className="text-2xl font-bold mb-6 text-center text-[#2A4D61]">What Our Users Say</h2>
+            <h2 className="text-2xl font-bold mb-6 text-center text-[#2A4D61]">What Learners Say</h2>
             <div className="grid md:grid-cols-2 gap-6">
               {[
-                { quote: "YouVersity has revolutionized our corporate training. It's efficient, cost-effective, and our employees love it!", author: "Jane Doe, HR Manager at TechCorp" },
-                { quote: "I've learned more in the past month with YouVersity than I did in a year of casual YouTube watching. The structure makes all the difference.", author: "John Smith, Freelance Developer" }
+                { quote: "Finally! A way to make my YouTube addiction productive. Created three courses last week and actually finished them!", author: "Alex M." },
+                { quote: "The AI course creation is mind-blowing. What used to take hours now takes seconds.", author: "Sarah K." }
               ].map((testimonial, index) => (
                 <motion.div
                   key={index}
