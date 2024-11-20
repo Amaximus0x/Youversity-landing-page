@@ -299,27 +299,51 @@ export default function LandingPage() {
                 className="w-[400px] mb-6"
               />
               <motion.h1
-                className="text-3xl md:text-4xl font-bold text-[#2A4D61]"
+                className="text-3xl md:text-4xl font-bold text-[#2A4D61] leading-tight"
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5 }}
               >
-                Turn YouTube into Your University
+                Transform Your YouTube Time into Real Learning
               </motion.h1>
+              <motion.h2
+                className="text-2xl md:text-3xl font-semibold text-[#EE434A]"
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: 0.1 }}
+              >
+                Stop Scrolling. Start Growing.
+              </motion.h2>
               <motion.p
                 className="text-base md:text-lg text-[#1E3443] max-w-lg"
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: 0.2 }}
               >
-                Unlock the power of AI-driven learning and transform your educational journey with personalized content from YouTube.
+                Turn those &quot;just 5 more minutes&quot; of YouTube into actual knowledge that matters. YouVersity transforms your watching habits into structured learning adventures.
+              </motion.p>
+              <motion.h3
+                className="text-xl font-semibold text-[#2A4D61]"
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: 0.3 }}
+              >
+                Your Personal Learning Universe
+              </motion.h3>
+              <motion.p
+                className="text-base md:text-lg text-[#1E3443] max-w-lg"
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: 0.4 }}
+              >
+                Transform any YouTube content into an engaging course in seconds. Whether it&apos;s the latest tech breakthrough, a breaking industry development, or that skill you&apos;ve been meaning to learn <span className="font-bold italic">– if it&apos;s on YouTube, you can master it on YouVersity.</span>
               </motion.p>
               <motion.div
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: 0.4 }}
+                transition={{ duration: 0.5, delay: 0.5 }}
               >
                 <Button className="bg-[#EE434A] hover:bg-[#D93D44] text-white rounded-full" onClick={scrollToEmailForm}>
                   Join the Waitlist <ArrowRight className="ml-2 h-4 w-4" />
@@ -331,63 +355,134 @@ export default function LandingPage() {
             </div>
           </motion.section>
 
-          <motion.section className="grid md:grid-cols-2 gap-8" {...fadeInUp}>
-            <motion.div whileHover={{ scale: 1.03, boxShadow: "0 4px 20px rgba(0,0,0,0.1)" }} transition={{ duration: 0.3 }}>
-              <Card className="bg-white/80 backdrop-blur-sm shadow-md rounded-2xl overflow-hidden h-full">
-                <CardContent className="p-6">
-                  <h2 className="text-xl font-bold mb-4 text-[#2A4D61] flex items-center bg-white/80">
-                    <Sparkles className="w-6 h-6 mr-2 text-[#EE434A]" />
-                    For HR and L&D Professionals
-                  </h2>
-                  <ul className="space-y-2">
-                    {[
-                      "Cost-effective training solutions",
-                      "Custom courses at your fingertips",
-                      "Up-to-date content leveraging the latest YouTube videos",
-                      "Flexibility to create company-specific training programs"
-                    ].map((item, index) => (
-                      <motion.li key={index} className="flex items-start" initial={{ opacity: 0, x: -20 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.3, delay: index * 0.1 }}>
-                        <CheckCircle className="w-5 h-5 text-[#42C1C8] mr-2 flex-shrink-0" />
-                        <span>{item}</span>
-                      </motion.li>
-                    ))}
-                  </ul>
-                </CardContent>
-              </Card>
-            </motion.div>
-            <motion.div whileHover={{ scale: 1.03, boxShadow: "0 4px 20px rgba(0,0,0,0.1)" }} transition={{ duration: 0.3 }}>
-              <Card className="bg-white/80 backdrop-blur-sm shadow-md rounded-2xl overflow-hidden h-full">
-                <CardContent className="p-6">
-                  <h2 className="text-xl font-bold mb-4 text-[#2A4D61] flex items-center">
-                    <Book className="w-6 h-6 mr-2 text-[#42C1C8]" />
-                    For Individual Learners
-                  </h2>
-                  <ul className="space-y-2">
-                    {[
-                      "Personalized learning paths",
-                      "Learn at your own pace",
-                      "Access to a vast library of educational content",
-                      "AI-powered course recommendations"
-                    ].map((item, index) => (
-                      <motion.li key={index} className="flex items-start" initial={{ opacity: 0, x: -20 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.3, delay: index * 0.1 }}>
-                        <CheckCircle className="w-5 h-5 text-[#EE434A] mr-2 flex-shrink-0" />
-                        <span>{item}</span>
-                      </motion.li>
-                    ))}
-                  </ul>
-                </CardContent>
-              </Card>
-            </motion.div>
+          <motion.section {...fadeInUp}>
+            <h2 className="text-3xl font-bold mb-8 text-center text-[#2A4D61]">Why YouVersity?</h2>
+            <div className="grid md:grid-cols-2 gap-8">
+              <motion.div whileHover={{ scale: 1.03, boxShadow: "0 4px 20px rgba(0,0,0,0.1)" }} transition={{ duration: 0.3 }}>
+                <Card className="bg-white/80 backdrop-blur-sm shadow-md rounded-2xl overflow-hidden h-full">
+                  <CardContent className="p-6">
+                    <h3 className="text-xl font-bold mb-4 text-[#– if it's on YouTube, you can master it on YouVersity.] flex items-center">
+                      <span className="text-2xl mr-2">🚀</span>
+                      Learning at the Speed of YouTube
+                    </h3>
+                    <ul className="space-y-3">
+                      {[
+                        "Build custom courses with a click of a button",
+                        "Master new technologies before traditional courses",
+                        "Share courses with your friends, students, coworkers and community",
+                        "Learn from your favorite educators"
+                      ].map((item, index) => (
+                        <motion.li key={index} className="flex items-start" initial={{ opacity: 0, x: -20 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.3, delay: index * 0.1 }}>
+                          <CheckCircle className="w-5 h-5 text-[#42C1C8] mr-2 flex-shrink-0 mt-1" />
+                          <span className="text-[#1E3443]">{item}</span>
+                        </motion.li>
+                      ))}
+                    </ul>
+                  </CardContent>
+                </Card>
+              </motion.div>
+
+              <motion.div whileHover={{ scale: 1.03, boxShadow: "0 4px 20px rgba(0,0,0,0.1)" }} transition={{ duration: 0.3 }}>
+                <Card className="bg-white/80 backdrop-blur-sm shadow-md rounded-2xl overflow-hidden h-full">
+                  <CardContent className="p-6">
+                    <h3 className="text-xl font-bold mb-4 text-[#2A4D61] flex items-center">
+                      <span className="text-2xl mr-2">🎯</span>
+                      Procrastination-Proof Learning
+                    </h3>
+                    <ul className="space-y-3">
+                      {[
+                        "Transform mindless scrolling into meaningful learning",
+                        "Go deeper with structured lessons",
+                        "Turn watching into active learning",
+                        "Track your progress with auto-generated quizzes"
+
+                      ].map((item, index) => (
+                        <motion.li key={index} className="flex items-start" initial={{ opacity: 0, x: -20 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.3, delay: index * 0.1 }}>
+                          <CheckCircle className="w-5 h-5 text-[#EE434A] mr-2 flex-shrink-0 mt-1" />
+                          <span className="text-[#1E3443]">{item}</span>
+                        </motion.li>
+                      ))}
+                    </ul>
+                  </CardContent>
+                </Card>
+              </motion.div>
+
+              <motion.div whileHover={{ scale: 1.03, boxShadow: "0 4px 20px rgba(0,0,0,0.1)" }} transition={{ duration: 0.3 }}>
+                <Card className="bg-white/80 backdrop-blur-sm shadow-md rounded-2xl overflow-hidden h-full">
+                  <CardContent className="p-6">
+                    <h3 className="text-xl font-bold mb-4 text-[#2A4D61] flex items-center">
+                      <span className="text-2xl mr-2">🤝</span>
+                      Learn Better Together
+                    </h3>
+                    <ul className="space-y-3">
+                      {[
+                        "Share custom courses with friends and coworkers instantly",
+                        "Build learning communities around your interests",
+                        "Collaborate on course creation and discover content curated by peers"
+                      ].map((item, index) => (
+                        <motion.li key={index} className="flex items-start" initial={{ opacity: 0, x: -20 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.3, delay: index * 0.1 }}>
+                          <CheckCircle className="w-5 h-5 text-[#42C1C8] mr-2 flex-shrink-0 mt-1" />
+                          <span className="text-[#1E3443]">{item}</span>
+                        </motion.li>
+                      ))}
+                    </ul>
+                  </CardContent>
+                </Card>
+              </motion.div>
+
+              <motion.div whileHover={{ scale: 1.03, boxShadow: "0 4px 20px rgba(0,0,0,0.1)" }} transition={{ duration: 0.3 }}>
+                <Card className="bg-white/80 backdrop-blur-sm shadow-md rounded-2xl overflow-hidden h-full">
+                  <CardContent className="p-6">
+                    <h3 className="text-xl font-bold mb-4 text-[#2A4D61] flex items-center">
+                      <span className="text-2xl mr-2">⚡</span>
+                      Create & Learn in Minutes
+                    </h3>
+                    <ul className="space-y-3">
+                      {[
+                        "Choose any topic you want to master",
+                        "Our AI instantly builds a structured course from the best YouTube content",
+                        "Get quizzes and progress tracking to ensure real learning happens"
+                      ].map((item, index) => (
+                        <motion.li key={index} className="flex items-start" initial={{ opacity: 0, x: -20 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.3, delay: index * 0.1 }}>
+                          <CheckCircle className="w-5 h-5 text-[#EE434A] mr-2 flex-shrink-0 mt-1" />
+                          <span className="text-[#1E3443]">{item}</span>
+                        </motion.li>
+                      ))}
+                    </ul>
+                  </CardContent>
+                </Card>
+              </motion.div>
+            </div>
           </motion.section>
 
           <motion.section {...fadeInUp}>
-            <h2 className="text-2xl font-bold mb-6 text-center text-[#2A4D61]">How YouVersity Works</h2>
+            <h2 className="text-2xl font-bold mb-6 text-center text-[#2A4D61]">How It Works</h2>
             <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
               {[
-                { step: 1, description: "Select your learning goals", icon: Sparkles },
-                { step: 2, description: "AI curates relevant content", icon: Play },
-                { step: 3, description: "Engage with interactive quizzes", icon: Book },
-                { step: 4, description: "Track progress and earn certificates", icon: Trophy }
+                { 
+                  step: 1, 
+                  title: "Pick Your Topic",
+                  description: "Choose anything you want to learn – from coding to cooking, business to biology.", 
+                  icon: Sparkles 
+                },
+                { 
+                  step: 2, 
+                  title: "Watch It Transform",
+                  description: "Our AI instantly creates a structured course from YouTube's best content on your chosen topic.", 
+                  icon: Play 
+                },
+                { 
+                  step: 3, 
+                  title: "Learn Your Way",
+                  description: "Follow the curriculum at your pace, track your progress, and test your knowledge with auto-generated quizzes.", 
+                  icon: Book 
+                },
+                { 
+                  step: 4, 
+                  title: "Share & Grow Together",
+                  description: "Invite friends to join your learning journey or share your custom-created courses with the world.", 
+                  icon: Trophy 
+                }
               ].map((item, index) => (
                 <motion.div
                   key={item.step}
@@ -407,18 +502,21 @@ export default function LandingPage() {
                   <div className="bg-white/80">
                     <item.icon className="w-6 h-6 md:w-8 md:h-8 mb-2 md:mb-3 text-[#2A4D61]" />
                   </div>
-                  <p className="text-xs md:text-sm font-medium">{item.description}</p>
+                  <h3 className="text-sm md:text-base font-bold mb-2 text-[#2A4D61]">{item.title}</h3>
+                  <p className="text-xs md:text-sm font-medium text-gray-600">{item.description}</p>
                 </motion.div>
               ))}
             </div>
           </motion.section>
 
           <motion.section {...fadeInUp}>
-            <h2 className="text-2xl font-bold mb-6 text-center text-[#2A4D61]">What Our Users Say</h2>
+            <h2 className="text-2xl font-bold mb-6 text-center text-[#2A4D61]">What Learners Say</h2>
             <div className="grid md:grid-cols-2 gap-6">
               {[
-                { quote: "YouVersity has revolutionized our corporate training. It's efficient, cost-effective, and our employees love it!", author: "Jane Doe, HR Manager at TechCorp" },
-                { quote: "I&apos;ve learned more in the past month with YouVersity than I did in a year of casual YouTube watching. The structure makes all the difference.", author: "John Smith, Freelance Developer" }
+                { quote: "Finally! A way to make my YouTube addiction productive. Created three courses last week and actually finished them!", author: " Alex M." },
+                { quote: "The AI course creation is mind-blowing. What used to take hours now takes seconds.", author: "Sarah K." },
+                { quote: "Sharing courses with my study group has made online learning actually fun.", author: "James T." },
+                { quote: "YouVersity has revolutionized our corporate training. It's efficient, cost-effective, and our employees love it!", author: "Jane Doe" }
               ].map((testimonial, index) => (
                 <motion.div
                   key={index}
@@ -477,7 +575,7 @@ export default function LandingPage() {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: 0.2 }}
               >
-                Ready to Start Your Learning Journey?
+                Ready to Transform Your Learning?
               </motion.h2>
               <motion.p
                 className="mb-6 max-w-2xl mx-auto text-sm md:text-base"
@@ -485,7 +583,8 @@ export default function LandingPage() {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: 0.4 }}
               >
-                Join thousands of learners who are already transforming their education with YouVersity.
+                Join thousands of learners who've turned their YouTube time into valuable skills. Create your first course in seconds – no credit card required. Start Learning Free
+
               </motion.p>
               <motion.form
                 ref={emailFormRef}
