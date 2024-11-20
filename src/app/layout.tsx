@@ -15,7 +15,7 @@ const geistMono = localFont({
 
 export const metadata: Metadata = {
   title: "YouVersity",
-  description: "Turn YouTube into Your University",
+  description: "Transform Your YouTube Time into Real Learning",
   icons: {
     icon: "/favicon.ico",
   },
