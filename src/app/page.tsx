@@ -278,7 +278,7 @@ export default function LandingPage() {
             )}
             <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
               <Button className="bg-[#EE434A] hover:bg-[#D93D44] text-white rounded-full" onClick={scrollToEmailForm}>
-                Join the Waitlist
+              Join the Beta Now
               </Button>
             </motion.div>
           </nav>
@@ -304,7 +304,7 @@ export default function LandingPage() {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5 }}
               >
-                Transform Your YouTube Time into Real Learning
+                Join Youversity Beta: Transform Your YouTube Time into Real Learning
               </motion.h1>
               <motion.h2
                 className="text-2xl md:text-3xl font-semibold text-[#EE434A]"
@@ -346,7 +346,7 @@ export default function LandingPage() {
                 transition={{ duration: 0.5, delay: 0.5 }}
               >
                 <Button className="bg-[#EE434A] hover:bg-[#D93D44] text-white rounded-full" onClick={scrollToEmailForm}>
-                  Join the Waitlist <ArrowRight className="ml-2 h-4 w-4" />
+                Join the Beta Now <ArrowRight className="ml-2 h-4 w-4" />
                 </Button>
               </motion.div>
             </div>
@@ -356,7 +356,7 @@ export default function LandingPage() {
           </motion.section>
 
           <motion.section {...fadeInUp}>
-            <h2 className="text-3xl font-bold mb-8 text-center text-[#2A4D61]">Why YouVersity?</h2>
+            <h2 className="text-3xl font-bold mb-8 text-center text-[#2A4D61]">Why Join the Youversity Beta?</h2>
             <div className="grid md:grid-cols-2 gap-8">
               <motion.div whileHover={{ scale: 1.03, boxShadow: "0 4px 20px rgba(0,0,0,0.1)" }} transition={{ duration: 0.3 }}>
                 <Card className="bg-white/80 backdrop-blur-sm shadow-md rounded-2xl overflow-hidden h-full">
@@ -510,7 +510,7 @@ export default function LandingPage() {
           </motion.section>
 
           <motion.section {...fadeInUp}>
-            <h2 className="text-2xl font-bold mb-6 text-center text-[#2A4D61]">What Learners Say</h2>
+            <h2 className="text-2xl font-bold mb-6 text-center text-[#2A4D61]">What our Early Users Say</h2>
             <div className="grid md:grid-cols-2 gap-6">
               {[
                 { quote: "Finally! A way to make my YouTube addiction productive. Created three courses last week and actually finished them!", author: " Alex M." },
@@ -575,7 +575,7 @@ export default function LandingPage() {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: 0.2 }}
               >
-                Ready to Transform Your Learning?
+                Be Part of Our Beta Community
               </motion.h2>
               <motion.p
                 className="mb-6 max-w-2xl mx-auto text-sm md:text-base"
@@ -583,7 +583,7 @@ export default function LandingPage() {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: 0.4 }}
               >
-                Join thousands of learners who've turned their YouTube time into valuable skills. Create your first course in seconds – no credit card required. Start Learning Free
+                Sign up now to gain early access to Youversity and help shape the future of personalized learning.
 
               </motion.p>
               <motion.form
@@ -615,7 +615,7 @@ export default function LandingPage() {
                     </div>
                   ) : (
                     <>
-                      Join the Waitlist <ArrowRight className="ml-2 h-4 w-4" />
+                      Sign up for Beta Access <ArrowRight className="ml-2 h-4 w-4" />
                     </>
                   )}
                 </Button>
@@ -625,9 +625,20 @@ export default function LandingPage() {
                   initial={{ opacity: 0, y: -10 }}
                   animate={{ opacity: 1, y: 0 }}
                   exit={{ opacity: 0, y: -10 }}
-                  className="mt-4 text-green-400 font-semibold text-center"
+                  className="mt-4 text-green-400 font-semibold text-center space-y-4"
                 >
-                  Thank you for joining! We'll be in touch soon.
+                  <h3 className="text-xl">You&apos;re officially signed up for the Youversity Beta!</h3>
+                  
+                  <h4 className="text-lg mt-6">What&apos;s Next?</h4>
+                  
+                  <ul className="list-none text-center space-y-2">
+                    <li>Stay tuned for updates on the beta launch.</li>
+                    <li>We&apos;ll send you instructions and exclusive access details soon.</li>
+                  </ul>
+                  
+                  <p className="mt-6">Thank you for joining us on this journey to revolutionize learning and upskilling.</p>
+                  
+                  <p className="mt-4">Keep an eye on your inbox!</p>
                 </motion.div>
               )}
               {submitError && (
@@ -662,7 +673,10 @@ export default function LandingPage() {
                 />
               </motion.div>
               <div className="flex flex-wrap justify-center md:justify-end space-x-4 text-sm">
-                {["Home", "My Courses", "Create New Course", "About Us", "Contact"].map((item, index) => (
+                {["Home", 
+                // "My Courses",
+                // "Create New Course", 
+                "About Us", "Contact"].map((item, index) => (
                   <motion.a
                     key={item}
                     href="#"
