@@ -14,6 +14,7 @@ import { loadSlim } from "tsparticles-slim"
 import { useCallback } from "react"
 import type { Engine } from "tsparticles-engine"
 import Image from "next/image"
+import { ContactModal } from "@/components/ContactModal"
 
 const poppins = Poppins({
   subsets: ['latin'],
@@ -173,6 +174,8 @@ export default function LandingPage() {
       setIsSubmitting(false);
     }
   };
+
+  const [isContactModalOpen, setIsContactModalOpen] = useState(false);
 
   if (!isMounted) {
     return (
@@ -673,14 +676,17 @@ export default function LandingPage() {
                 />
               </motion.div>
               <div className="flex flex-wrap justify-center md:justify-end space-x-4 text-sm">
-                {["Home", 
-                // "My Courses",
-                // "Create New Course", 
-                "About Us", "Contact"].map((item, index) => (
+                {["Home", "Contact"].map((item, index) => (
                   <motion.a
                     key={item}
-                    href="#"
-                    className="hover:text-[#42C1C8] transition-colors mb-2"
+                    href={item === "Home" ? "#" : undefined}
+                    onClick={(e) => {
+                      if (item === "Contact") {
+                        e.preventDefault();
+                        setIsContactModalOpen(true);
+                      }
+                    }}
+                    className="hover:text-[#42C1C8] transition-colors mb-2 cursor-pointer"
                     whileHover={{ scale: 1.05 }}
                     initial={{ opacity: 0, y: 10 }}
                     animate={{ opacity: 1, y: 0 }}
@@ -745,6 +751,10 @@ export default function LandingPage() {
           </motion.nav>
         )}
       </div>
+      <ContactModal 
+        isOpen={isContactModalOpen} 
+        onClose={() => setIsContactModalOpen(false)} 
+      />
     </div>
   )
 }
